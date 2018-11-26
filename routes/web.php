@@ -40,6 +40,6 @@ Route::get('social/user/', 'PostController@showPost')->name('show');
 //->middleware('redirect')
 
 
-Route::get('social/chat/', 'ChatController@chat')->name('chat')->middleware('auth');
+Route::get('social/chat/{id}', 'ChatController@chat')->name('chat')->middleware('auth');
+Route::post('social/chat/{id}', 'ChatController@store')->name('chat')->middleware('auth');
 Route::get('social/friends', 'ChatController@friends')->name('friends')->middleware('auth');
-Route::post('social/chat/', 'ChatController@myChat')->name('chat')->middleware('auth');

@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <div class="container-flex">
 
     <div class ="card mx-auto" id="heartland">
@@ -19,12 +17,12 @@
         <div id="chat" class="card-body">
 
             <div class="list">
-                @if(count($messages) > 0)
-                @foreach($messages as $message)
+                
                <div class="emm" id="chat-one">
                             
                     <img src="{{asset('/img/love.jpg')}}" id="love">
-                    <p id="me">{{$message->message}}</p>
+                   
+                    <p id="me">Khaliz</p>
 
                </div>  
              
@@ -38,9 +36,6 @@
 
                 </div>
                  
-                @endforeach
-                @endif
-               
                 
 
             </div>

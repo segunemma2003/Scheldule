@@ -17,29 +17,40 @@ class ChatController extends Controller
         return view('social.friends', compact('users'));
     }
 
-    public function myChat(Request $request){
+    public function store(Request $request){
 
         $this->validate($request, [
             'message' => 'required|string',
         ]);
-
+       
         $id=Auth::user()->id;
         $message = new Message([
+
          'message'=>$request->message,
-         'user_id'=>$id
+         'user_id'=>\Auth::user()->id,
+         'receiver_id'=>$request->receiver_id
 
         ]);
+
         
-        $message->save();
-        return redirect()->back();          
+        
+        if($message->save()){
+        
+        }else{
+         return redirect()->back()->with('status', 'Your message was not sent');
+        }
+                 
         
     }
 
 
-    public function chat(){
-       
-        $messages = Message::all();
+    public function chat($id){   
+        
+        $receiver=User::whereId($id)->first();
 
-        return view('social.chat',compact('messages'));
+        return view('social.chat',compact('receiver'));  
     }
+
+    
 }
+

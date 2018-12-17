@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use\Profile;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -27,4 +28,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function posts(){
+
+   return $this->hasMany('App/Post');
+
+  }
+
+  public function profiles(){
+
+    return $this->hasOne('App/Profile');
+
+   }
+
+  public function likes(){
+
+    return $this->hasMany('App/Like');
+
+   }
+
+
+    public function comments(){
+
+    return $this->hasMany('App/Comment');
+
+   }
+
 }

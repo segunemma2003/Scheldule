@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     public function sender(){
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User', 'sender_id');
     
     }
 
@@ -18,3 +18,4 @@ class Message extends Model
     protected $guarded = ['id'];
     protected $table = 'messages';
 }
+ 

@@ -4,62 +4,6 @@
 
 <div class="container-fliud">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
- <img src="{{asset('/svg/accusoft.svg')}}" class="navbar-brand" alt="chat" id="chat">
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#profile" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="profile">
-
-    <ul class="navbar-nav ml-auto">
-
-      <li class="nav-item">
-
-       <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search for friends" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </li>
-
-      <li class="nav-item">
-
-        <i class="fas fa-bell"></i>
-
-      </li>
-
-      <li class="nav-item">
-
-       <a href="{{route('chat', )}}"><i class="fas fa-comments"></i></a>
-    
-      
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         {{ Auth::user()->user_name }}
-       </a>
-       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-          <a class="dropdown-item" href="{{ route('logout') }}"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  {{ __('Logout') }}
-         </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-         </form>
-       </div>
-     </li>
-    </ul>
-  </div>
-</nav>
-
-
 <div class="prosper">
 
   <div id="one">
@@ -123,7 +67,7 @@ post from the database is passed with $post which was used to store it with the 
         <div class="kalu">
 
           <img src="{{asset('/img/love.jpg')}}" id="love">
-          <p id="okoji">Love Okoji <span> <br/>active 3 minutes ago</p>
+          <p id="okoji">{{$post->user->name}} <span> <br/>active 3 minutes ago</p>
         
         
         </div>
@@ -162,14 +106,12 @@ post from the database is passed with $post which was used to store it with the 
           <div class="end">
 
             <div id="charlie">
-
-              <form action="/social/reaction" class="ali">
-
-                <i class="far fa-hand-point-right pr-4" id="my-icon" name="like"></i>
+              
+              <input type="hidden" id="user_id" value="{{Auth::user()->id}}">
+              <input type="hidden" id="post_id" value="{{$post->id}}">
+              <i class="far fa-hand-point-right pr-4" id="my-like" name="like"></i>
 
                   
-              </form>
-
 
               <form action="/social/reaction" class="ali">
 
@@ -186,21 +128,18 @@ post from the database is passed with $post which was used to store it with the 
 
              <div id="joy">
 
-               <i class="far fa-comment-dots" id="icon" class="font-awesome" onclick="Visible()"></i>
+               <h1></h1>
+               <a href="{{route('comment', $post->id)}}"><i class="far fa-comment-dots" id="icon" class="font-awesome"></i></a>
 
               </div>   
               
             </div>
-            
-            <form method="post" id="my-form" action="/social/comment">
-             
-              @csrf
-              <input type="hidden" name="post_id" value="{{$post->id}}">
-             <input class="form-control text-center" name="comments" type="text" placeholder="Comment">
 
-              <input type="submit" id="submit-one" onclick="hide()"/>
-                  
-            </form>
+            <div class="info">
+            
+
+
+            </div>
                       
             
           </div>

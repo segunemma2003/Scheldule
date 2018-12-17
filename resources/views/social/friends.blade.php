@@ -2,16 +2,19 @@
 
 @section('content')
 
-@foreach($users as $user)
-<ul class="list-group">
-
-    <li>
-      <a href="{{route('chat', $user->id)}}">{{$user->user_name}}</a>
-   </li>
- 
-
-</ul>
-@endforeach
+@if(!$users->isEmpty())
+                    <ul class="list-group">
+                        @foreach($users as $user)
+                            @if($user->name!=auth()->user()->name)
+                            
+                            <li class="list-group-item">
+                            <img  src="/storage/upload/{{$user->picture}}" alt="" width="100px" height="100px">
+                            <a href="{{route('chat',$user->id)}}">{{$user->name}}</a></li>
+                            
+                            @endif
+                        @endforeach
+                    </ul>
+                    @endif
 
 
 @endsection

@@ -26,9 +26,9 @@
 
       <li class="nav-item">
 
-       <a href="{{route('chat')}}"><i class="fas fa-comments"></i></a>
+       <a href="{{route('friends')}}"><i class="fas fa-comments"></i></a>
     
-      
+       
       </li>
 
       <li class="nav-item dropdown">

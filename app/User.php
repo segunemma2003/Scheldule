@@ -41,22 +41,23 @@ class User extends Authenticatable
    }
 
 
-  /*  public function comments(){
+    public function comments(){
 
     return $this->hasMany('App/Comment');
  
    }
 
-   */
+
 
    public function sender(){
-       return $this->hasMany('App\Message', 'user_id');
+       return $this->hasMany('App\Message', 'sender_id');
    }
 
-   public function messages(){
+   public function receiver(){
 
-    return $this->hasMany('App/Message', 'receiver_id');
+    return $this->hasMany('App/Message', 'receiver_id','id');
  
    }
 
 }
+ 

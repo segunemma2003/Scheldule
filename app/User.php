@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use\Profile;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -34,29 +35,23 @@ class User extends Authenticatable
 
   }
 
+  public function profiles(){
+
+    return $this->hasOne('App/Profile');
+
+   }
+
   public function likes(){
 
     return $this->hasMany('App/Like');
- 
+
    }
 
 
     public function comments(){
 
     return $this->hasMany('App/Comment');
- 
-   }
 
-
-
-   public function sender(){
-       return $this->hasMany('App\Message', 'sender_id');
-   }
-
-   public function receiver(){
-
-    return $this->hasMany('App/Message', 'receiver_id','id');
- 
    }
 
 }

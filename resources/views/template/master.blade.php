@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{asset('admin.css')}}"/>   
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/chat.css') }}" rel="stylesheet"/> 
+   
 
     <style>
 
@@ -47,6 +48,7 @@
         justify-content:space-around;
         padding-top: 30px;
         
+
     }
 
     .grid{
@@ -136,6 +138,7 @@
     justify-content: space-between;
     padding-left: 40px;
     
+
 
 }
 
